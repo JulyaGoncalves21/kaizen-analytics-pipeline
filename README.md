@@ -5,6 +5,8 @@
 **Business focus:** Continuous improvement · Portfolio visibility · Data governance · Decision support  
 **Methods and tools:** Python · Power Query/Power BI concepts · Data validation · Kaizen · PDCA
 
+[Professional portfolio](https://julyagoncalves21.github.io/) · [GitHub profile](https://github.com/JulyaGoncalves21)
+
 ## Executive summary
 
 Continuous-improvement initiatives become difficult to follow when project information, owners, stages and evidence are distributed across files and routines. Leaders need a trustworthy view of status, missing information and priorities.
@@ -119,4 +121,3 @@ Não há planilha, relatório, dashboard, PBIX/PBIT, screenshot ou documento de 
 ## Aprendizado
 
 A utilidade de um dashboard começa antes da visualização. Definições compartilhadas, validação confiável e responsabilidade clara pelo dado são necessárias para apoiar decisões.
-
