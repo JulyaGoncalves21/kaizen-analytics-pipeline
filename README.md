@@ -1,54 +1,45 @@
 # Kaizen Analytics Pipeline
 
-A sanitized, local-only portfolio adaptation of a workflow that consolidates individual Kaizen files, reconciles them with an improvement registry, records exceptions, requires business validation, and prepares a structured analytical dataset.
+> Conceptual, sanitized case study about improvement-initiative governance, validation and decision support. It is not a copy of an employer pipeline, dashboard or workbook.
 
-## Problem
+**Business focus:** Continuous improvement · Portfolio visibility · Data governance · Decision support  
+**Methods and tools:** Python · Power Query/Power BI concepts · Data validation · Kaizen · PDCA
 
-Improvement records were distributed across files owned by different people while analysis required one consistent dataset. Missing files, alternate remote attachments, template differences and business approval made a simple file merge unsafe.
+## Executive summary
 
-## Solution
+Continuous-improvement initiatives become difficult to follow when project information, owners, stages and evidence are distributed across files and routines. Leaders need a trustworthy view of status, missing information and priorities.
 
-The source workflow locates each file, prefers a local copy, tries an attachment fallback, parses and validates records independently, lists unresolved items, and applies a human validation gate before data becomes publishable. The resulting layer supports an HTML analysis view and later Power BI consumption; Power BI refresh remains manual.
+This repository demonstrates a transparent public method for consolidating synthetic improvement records, applying validation rules, isolating pending items and producing a curated analytical layer. It deliberately excludes original workbooks, reports, dashboards, governance documents and corporate connectors.
 
-This repository implements that boundary with synthetic CSV data. It intentionally excludes corporate adapters and proprietary workbook layouts.
+## Business challenge
 
-## Architecture and data flow
+- Distributed records create inconsistent definitions and follow-up.
+- A missing or malformed source should not stop the entire portfolio update.
+- Technical validity is different from business approval.
+- Dashboards cannot be trusted without ownership and validation upstream.
 
-1. Read the synthetic improvement registry.
-2. Resolve each expected source using local-first, fallback-second precedence.
-3. Read the public key/value format and validate identifier, category and date.
-4. Isolate missing or malformed records as pending.
-5. Join explicit business validations.
-6. Export CSV and JSON; do not mutate the portfolio HTML or Power BI.
+## My contribution
 
-See [architecture](docs/architecture.md) and [technical decisions](docs/technical-decisions.md).
+The case reflects work on consolidation, validation and monitoring of improvement data, with the goal of making routines more visible and supporting decisions. The public implementation rebuilds the method with fictional records and a simplified local data contract.
 
-## Main components
+## Conceptual solution
 
-- `data_sources.py`: registry and business-validation adapters.
-- `file_discovery.py`: deterministic local/fallback resolution.
-- `workbook_reader.py`: transparent public input reader.
-- `validation.py`: pure, testable rules.
-- `transformation.py`: publication-gate model.
-- `export.py`: local analytical outputs.
-- `cli.py`: orchestration with per-record error isolation.
+1. Read a synthetic central registry and individual demonstration records.
+2. Resolve each expected source using deterministic local/fallback precedence.
+3. Validate required fields, identifiers and dates per record.
+4. Keep invalid or incomplete records in an explicit pending state.
+5. Apply a separate human/business validation gate.
+6. Export a curated layer for analytical storytelling.
 
-## Repository structure
+![Conceptual architecture showing synthetic records, validation, pending states, business approval and an analytical layer](docs/architecture.svg)
 
-```text
-src/kaizen_pipeline/  Python package
-tests/                pure-rule tests
-sample-data/          invented demonstration records
-power-bi/             safe semantic-layer documentation
-docs/                 architecture and decisions
-site/                 GitHub Pages case study
-```
+See the [architecture notes](docs/architecture.md), [data dictionary](docs/data-dictionary.md) and [technical decisions](docs/technical-decisions.md).
 
-## Technologies
+## Business value
 
-Python standard library, CSV/JSON, pytest and ruff for development, semantic HTML and CSS, and GitHub Actions. The private workflow also uses Excel and corporate data sources; those integrations are not included.
+The approach makes portfolio status easier to review, surfaces incomplete records and creates a common basis for follow-up. Counts printed by the demo describe only its deterministic fixtures and are not business results.
 
-## Run with synthetic data
+## Safe public demonstration
 
 ```bash
 python -m venv .venv
@@ -56,31 +47,76 @@ python -m pip install -e .
 python -m kaizen_pipeline.cli --show-summary
 ```
 
-Expected summary for the included sample: six processed records, three publishable and three pending. This is a deterministic demo outcome, not an operational metric.
+The code reads only invented CSV fixtures and writes ignored local outputs. It has no corporate or external connection.
 
-## Security and anonymization
+## Repository map
 
-All public records are fictional. No original spreadsheets, endpoints, credentials, employee/client data, executables, logs, PBIX/PBIT files or browser state are included. Review [PUBLIC_RELEASE_AUDIT.md](PUBLIC_RELEASE_AUDIT.md) before reuse.
+```text
+src/kaizen_pipeline/  local consolidation, validation and export logic
+tests/                pure-rule tests
+sample-data/          fictional projects, people, categories and dates
+power-bi/             safe semantic-layer documentation; no PBIX/PBIT
+docs/                 conceptual architecture, dictionary and decisions
+site/                  static case-study page built from synthetic content
+```
 
-## Limitations of the public version
+## Security and limitations
 
-- The original Excel template parsers and corporate attachment/list clients remain private.
-- The public adapter uses CSV instead of reproducing corporate workbook structures.
-- No Power BI file is distributed; only a safe data contract is documented.
-- The site explains the case and is not rewritten by the pipeline.
-- Power BI refresh is not automated.
+- No original spreadsheet, report, dashboard, PBIX/PBIT, screenshot or governance document.
+- No employee/client data, internal classification, endpoint, path, URL or server name.
+- No corporate connector, executable, credential, cookie or browser state.
+- The public CSV contract intentionally does not reproduce private workbook structures.
+- Business validation is a synthetic input, not an automated claim of approval.
 
-## Next steps
+Read [SECURITY.md](SECURITY.md) and [PUBLIC_RELEASE_AUDIT.md](PUBLIC_RELEASE_AUDIT.md) before reuse.
 
-- Add an XLSX synthetic sample when the controlled workbook-generation tool is available.
-- Add a pluggable read-only API contract without shipping corporate implementation.
-- Extend validation tests with more malformed synthetic inputs.
+## What I learned
 
-## Author
+The usefulness of a dashboard starts upstream. Shared definitions, reliable validation and clear ownership are needed before visualization can support decisions.
 
-Portfolio project maintained by the repository owner.
+---
 
-## Resumo em português
+# Português
 
-Versão pública e sanitizada de um pipeline de consolidação de Kaizens. A demonstração usa somente dados fictícios, prioriza arquivo local, usa fallback local de exemplo, registra pendências e exige validação do negócio antes da publicação. Integrações corporativas, planilhas reais, executáveis e Power BI original permanecem privados.
+## Pipeline Analítico de Kaizens
+
+> Estudo de caso conceitual e sanitizado sobre governança de iniciativas de melhoria, validação e apoio à decisão. Não é uma cópia de pipeline, dashboard ou planilha corporativa.
+
+## Resumo executivo
+
+Iniciativas de melhoria contínua ficam difíceis de acompanhar quando informações de projeto, responsáveis, etapas e evidências estão distribuídas entre arquivos e rotinas. Lideranças precisam de uma visão confiável de status, pendências e prioridades.
+
+Este repositório demonstra um método público e transparente para consolidar registros sintéticos de melhoria, aplicar regras de validação, isolar pendências e produzir uma camada analítica curada. Planilhas, relatórios, dashboards, documentos de governança e conectores corporativos originais são excluídos deliberadamente.
+
+## Desafio de negócio
+
+- Registros distribuídos criam definições e acompanhamentos inconsistentes.
+- Uma fonte ausente ou inválida não deve interromper toda a atualização do portfólio.
+- Validade técnica é diferente de aprovação do negócio.
+- Dashboards não são confiáveis sem responsabilidade e validação antes da visualização.
+
+## Minha contribuição
+
+O estudo reflete atuação em consolidação, validação e acompanhamento de dados de melhoria, buscando dar visibilidade às rotinas e apoiar decisões. A implementação pública reconstrói o método com registros fictícios e um contrato de dados local simplificado.
+
+## Solução conceitual
+
+1. Ler um registro central sintético e arquivos individuais de demonstração.
+2. Resolver cada fonte esperada por precedência local/fallback determinística.
+3. Validar campos obrigatórios, identificadores e datas por registro.
+4. Manter registros inválidos ou incompletos em um estado explícito de pendência.
+5. Aplicar uma etapa separada de validação humana/do negócio.
+6. Exportar uma camada curada para narrativa analítica.
+
+## Valor de negócio
+
+A abordagem facilita a revisão do portfólio, evidencia registros incompletos e cria uma base comum para acompanhamento. As contagens exibidas pela demonstração descrevem somente dados fictícios determinísticos e não representam resultados de negócio.
+
+## Segurança e limitações
+
+Não há planilha, relatório, dashboard, PBIX/PBIT, screenshot ou documento de governança original; dados de funcionários ou clientes; classificação interna; endpoint, caminho, URL ou servidor; conector corporativo; executável; credencial; cookie ou estado de navegador. O contrato CSV público é simplificado e a validação de negócio é uma entrada sintética.
+
+## Aprendizado
+
+A utilidade de um dashboard começa antes da visualização. Definições compartilhadas, validação confiável e responsabilidade clara pelo dado são necessárias para apoiar decisões.
 
