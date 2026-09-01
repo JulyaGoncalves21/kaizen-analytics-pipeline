@@ -1,0 +1,8 @@
+kaizen_id,title,owner,expected_file,status
+KZ-001,Reduce handoff delay,Ana Lima,KZ-001.csv,Completed
+KZ-002,Standardize inspection notes,Bruno Reis,KZ-002.csv,Completed
+KZ-003,Visual material staging,Carla Nunes,KZ-003.csv,In review
+KZ-004,Simplify request routing,Diego Luz,KZ-004.csv,Completed
+KZ-005,Improve document checklist,Elisa Prado,KZ-005.csv,Completed
+KZ-006,Missing source example,Felipe Costa,KZ-006.csv,In review
+
