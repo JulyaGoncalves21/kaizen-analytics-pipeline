@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Technical case study of a sanitized Kaizen consolidation and validation pipeline.">
+  <title>Kaizen Analytics Pipeline</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <nav aria-label="Primary"><a href="#flow">Flow</a><a href="#architecture">Architecture</a><a href="#boundaries">Boundaries</a></nav>
+    <p class="eyebrow">Technical case study · synthetic data</p>
+    <h1>Kaizen Analytics Pipeline</h1>
+    <p class="lead">From distributed improvement files to a validated analytical layer, with explicit pending states and a human publication gate.</p>
+  </header>
+  <main id="content">
+    <section aria-labelledby="problem"><h2 id="problem">The operating problem</h2><p>Individual Kaizen files and a central improvement registry needed to be reconciled without letting one missing or malformed file stop the entire update. Technical validity was not enough: the business still had to confirm which changes were publishable.</p></section>
+    <section id="flow" aria-labelledby="flow-title"><h2 id="flow-title">Verified flow</h2><ol class="steps"><li><b>Discover</b><span>Locate the owner file.</span></li><li><b>Resolve</b><span>Prefer local; use attachment fallback.</span></li><li><b>Validate</b><span>Parse, reconcile and isolate failures.</span></li><li><b>Approve</b><span>Business reviews pending rows.</span></li><li><b>Publish data</b><span>Generate the structured layer.</span></li><li><b>Analyze</b><span>HTML reads it; Power BI refresh stays manual.</span></li></ol></section>
+    <section id="architecture" aria-labelledby="architecture-title"><h2 id="architecture-title">Architecture</h2><div class="diagram" role="img" aria-label="Individual files and improvement registry flow through consolidation, pending handling and business validation to an analytical dataset consumed by HTML and manually refreshed Power BI."><div>Individual files<br><small>local → fallback</small></div><i>→</i><div>Consolidation<br><small>per-record isolation</small></div><i>→</i><div>Business gate<br><small>pending or approved</small></div><i>→</i><div>Analytical layer<br><small>HTML + Power BI</small></div></div></section>
+    <section><h2>Public demonstration</h2><div class="cards"><article><strong>6</strong><span>fictional registry rows</span></article><article><strong>3</strong><span>publishable demo rows</span></article><article><strong>0</strong><span>external connections</span></article></div><p>These counts describe only the included deterministic sample and are not business results.</p></section>
+    <section id="boundaries"><h2>Security boundaries</h2><ul><li>No real workbooks, names, costs, indicators, URLs or IDs.</li><li>No executable, corporate connector, browser state or credentials.</li><li>No PBIX/PBIT; the semantic contract is documented instead.</li><li>The automation does not rewrite the HTML and does not operate Power BI.</li></ul></section>
+  </main>
+  <footer><p>Sanitized portfolio adaptation. Source systems and operational data remain private.</p></footer>
+</body>
+</html>
+
