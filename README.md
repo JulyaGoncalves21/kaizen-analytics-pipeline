@@ -1,4 +1,4 @@
-# Kaizen Analytics Pipeline
+# Kaizen Portfolio Analytics
 
 > Conceptual, sanitized case study about improvement-initiative governance, validation and decision support. It is not a copy of an employer pipeline, dashboard or workbook.
 
